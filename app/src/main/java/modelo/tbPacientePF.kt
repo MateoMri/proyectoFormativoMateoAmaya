@@ -1,14 +1,13 @@
 package modelo
 
 data class tbPacientePF(
-    val uuid: String,
-    val NombrePaciente: String,
-    val ApellidoPaciente: String,
-    val EdadPaciente: Int,
-    val EnfermedadPaciente: String,
-    val NumeroHabitacion: String,
-    val NumeroCama: Int,
-    val MedicamentoAsignado: String,
-    val FechaNacimiento: String,
-    val HoraAplicacion: String
+   val id_paciente : Int,
+    var nombres : String,
+    var apellidos : String,
+    var fecha_nacimiento : String,
+    var habitacion : Int,
+    var cama : Int,
+    var enfermedad : String,
+    var medicina : String,
+    var hora_aplicacion : String
 )

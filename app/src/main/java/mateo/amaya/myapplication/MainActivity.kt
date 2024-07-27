@@ -47,18 +47,17 @@ class MainActivity : AppCompatActivity() {
                 val listaPaciente = mutableListOf<tbPacientePF>()
 
                 while (resultSet.next()) {
-                    val uuid = resultSet.getString("uuid")
-                    val NombrePaciente = resultSet.getString("NombrePaciente")
-                    val ApellidoPaciente = resultSet.getString("ApellidoPaciente")
-                    val EdadPaciente = resultSet.getInt("EdadPaciente")
-                    val EnfermedadPaciente = resultSet.getString("EnfermedadPaciente")
-                    val NumeroHabitacion = resultSet.getString("NumeroHabitacion")
-                    val NumeroCama = resultSet.getInt("NumeroCama")
-                    val MedicamentoAsignado = resultSet.getString("MedicamentoAsignado")
-                    val FechaNacimiento = resultSet.getString("FechaNacimiento")
-                    val HoraAplicacion = resultSet.getString("HoraAplicacion")
+                    val id = resultSet.getInt("id_paciente")
+                    val NombrePaciente = resultSet.getString("nombres")
+                    val ApellidoPaciente = resultSet.getString("apellidos")
+                    val fecha_nacimiento = resultSet.getString("fecha_nacimiento")
+                    val habitacion = resultSet.getInt("habitacion")
+                    val cama = resultSet.getInt("cama")
+                    val enfermedad = resultSet.getString("enfermedad")
+                    val MedicamentoAsignado = resultSet.getString("medicina")
+                    val HoraAplicacion = resultSet.getString("Hora_Aplicacion")
 
-                    val valoresJuntos = tbPacientePF(uuid, NombrePaciente, ApellidoPaciente, EdadPaciente, EnfermedadPaciente, NumeroHabitacion, NumeroCama, MedicamentoAsignado, FechaNacimiento, HoraAplicacion)
+                    val valoresJuntos = tbPacientePF(id, NombrePaciente, ApellidoPaciente, fecha_nacimiento, habitacion, cama, enfermedad, MedicamentoAsignado,HoraAplicacion)
 
                     listaPaciente.add(valoresJuntos)
                 }

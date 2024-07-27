@@ -27,7 +27,6 @@ class AgregarPaciente : AppCompatActivity() {
      //1- mando a llamar a todos los elementos que tengo en la vista
         val txtNombrePaciente = findViewById<TextView>(R.id.txtNombrePaciente)
         val txtApellidoPaciente = findViewById<TextView>(R.id.txtApellidoPaciente)
-        val txtEdadPaciente = findViewById<TextView>(R.id.txtEdadPaciente)
         val txtEnfermedadPaciente = findViewById<TextView>(R.id.txtEnfermedadPaciente)
         val txtNumeroHabitacion = findViewById<TextView>(R.id.txtNumeroHabitacion)
         val txtNumeroCama = findViewById<TextView>(R.id.txtNumeroCama)
@@ -46,21 +45,28 @@ class AgregarPaciente : AppCompatActivity() {
 
                 //Crear una variable que contenga un PrepareStatement
 
-                val addPaciente = objConexion?.prepareStatement("insert into tbPacientePF (uuid, NombrePaciente, ApellidoPaciente, EdadPaciente, EnfermedadPaciente, NumeroHabitacion, NumeroCama, MedicamentoAsigando, FechaNacimiento, HoraAplicacion) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")!!
-                addPaciente.setString(1, UUID.randomUUID().toString())
-                addPaciente.setString(2, txtNombrePaciente.text.toString())
-                addPaciente.setString(3, txtApellidoPaciente.text.toString())
-                addPaciente.setInt(4, txtEdadPaciente.text.toString().toInt())
-                addPaciente.setString(5, txtEnfermedadPaciente.text.toString())
-                addPaciente.setString(6, txtNumeroHabitacion.text.toString())
-                addPaciente.setInt(7, txtNumeroCama.text.toString().toInt())
-                addPaciente.setString(8, txtMedicamentoAsignado.text.toString())
-                addPaciente.setString(9, txtFechaNacimiento.text.toString())
-                addPaciente.setString(10, txtHoraAplicacion.text.toString())
+                val addPaciente = objConexion?.prepareStatement("insert into tbPacientePF(nombres, apellidos, fecha_nacimiento, habitacion, cama, enfermedad, medicina, hora_aplicacion) values(?,?,?,?,?,?,?,?)")!!
+                addPaciente.setString(1, txtNombrePaciente.text.toString())
+                addPaciente.setString(2,txtApellidoPaciente.text.toString())
+                addPaciente.setString(3,txtFechaNacimiento.text.toString())
+                addPaciente.setInt(4,txtNumeroHabitacion.text.toString().toInt())
+                addPaciente.setInt(5,txtNumeroCama.text.toString().toInt())
+                addPaciente.setString(6,txtEnfermedadPaciente.text.toString())
+                addPaciente.setString(7,txtMedicamentoAsignado.text.toString())
+                addPaciente.setString(8,txtHoraAplicacion.text.toString())
                 addPaciente.executeUpdate()
                 val commit = objConexion.prepareStatement("commit")
                 commit.executeUpdate()
             }
+            txtNombrePaciente.setText("")
+            txtApellidoPaciente.setText("")
+            txtNumeroCama.setText("")
+            txtEnfermedadPaciente.setText("")
+            txtMedicamentoAsignado.setText("")
+            txtHoraAplicacion.setText("")
+            txtNumeroHabitacion.setText("")
+            txtFechaNacimiento.setText("")
+            txtNombrePaciente.requestFocus()
         }
         btnRegresar.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

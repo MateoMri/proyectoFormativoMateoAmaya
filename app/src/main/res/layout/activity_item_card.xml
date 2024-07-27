@@ -21,13 +21,6 @@
             android:textSize="34sp" />
 
         <ImageView
-            android:id="@+id/btnEditarPaciiente"
-            android:layout_width="127dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/vector_edit" />
-
-        <ImageView
             android:id="@+id/btnBorrarPaciente"
             android:layout_width="127dp"
             android:layout_height="match_parent"
